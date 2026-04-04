@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morning Intelligence · 2026-04-03</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .lang-en { display: none; }
+    .lang-zh { display: block; }
+    .audio-player {
+      filter: invert(1) brightness(0.95);
+    }
+    .signal-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .signal-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- Language Toggle Button -->
+  <button id="lang-toggle" onclick="toggleLang()"
+    class="fixed top-4 right-4 z-50 bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg hover:bg-indigo-700 transition-all select-none">
+    EN
+  </button>
+
+  <script>
+    var _lang = localStorage.getItem('report-lang') || 'zh';
+    function toggleLang() {
+      _lang = _lang === 'zh' ? 'en' : 'zh';
+      localStorage.setItem('report-lang', _lang);
+      applyLang();
+    }
+    function applyLang() {
+      document.querySelectorAll('.lang-zh').forEach(function(el) {
+        el.style.display = _lang === 'zh' ? '' : 'none';
+      });
+      document.querySelectorAll('.lang-en').forEach(function(el) {
+        el.style.display = _lang === 'en' ? '' : 'none';
+      });
+      document.getElementById('lang-toggle').textContent = _lang === 'zh' ? 'EN' : '中文';
+    }
+    document.addEventListener('DOMContentLoaded', applyLang);
+  </script>
+
+  <!-- Main Container -->
+  <div class="max-w-4xl mx-auto px-3 py-8 sm:px-6">
+
+    <!-- Section 0: Night Shift Intelligence -->
+    <div class="mb-8 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl p-6 border border-teal-200">
+      <h2 class="text-2xl font-bold text-teal-900 mb-6">
+        <span class="lang-zh">夜班情报简报</span>
+        <span class="lang-en">Night Shift Intelligence</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- D1 Card: Backlog -->
+        <div class="bg-white border-l-4 border-teal-600 rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-teal-700 mb-3">
+            <span class="lang-zh">D1: 待办事项</span>
+            <span class="lang-en">D1: Backlog</span>
+          </h3>
+          <p class="text-sm text-slate-600 mb-4 lang-zh">摘要挖掘 Agent 未产出内容。待办项目：</p>
+          <p class="text-sm text-slate-600 mb-4 lang-en">Backlog mining agent dispatched but produced no output.</p>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li class="lang-zh">• LinkedIn 帖子草稿（NovaOS 治理层）- 超期</li>
+            <li class="lang-zh">• Gate Zero 材料（预算占位 + AMOS 架构）- 阻塞</li>
+            <li class="lang-en">• LinkedIn post draft (NovaOS governance layer) — overdue</li>
+            <li class="lang-en">• Gate Zero materials (budget + AMOS schema) — blocked</li>
+          </ul>
+          <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded text-xs text-amber-800 lang-zh">
+            <strong>行动:</strong> 4 月 4 日首先执行 D1（两项都是 P0 超期）
+          </div>
+          <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded text-xs text-amber-800 lang-en">
+            <strong>Action:</strong> Execute D1 first on Apr 4 (both items are P0 overdue)
+          </div>
+        </div>
+
+        <!-- D2 Card: World Intelligence -->
+        <div class="bg-white border-l-4 border-violet-600 rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-violet-700 mb-3">
+            <span class="lang-zh">D2: 世界情报 - 关键发现</span>
+            <span class="lang-en">D2: World Intelligence — CRITICAL FIND</span>
+          </h3>
+          <p class="font-semibold text-violet-800 mb-2">
+            <span class="lang-zh">分层治理架构 (LGA)</span>
+            <span class="lang-en">Layered Governance Architecture (LGA)</span>
+          </p>
+          <p class="text-xs text-slate-600 mb-3 lang-zh">ArXiv 2603.07191v2 · 2026年3月 · MENA + EU 双研究所</p>
+          <p class="text-xs text-slate-600 mb-3 lang-en">ArXiv 2603.07191v2 · March 2026 · MENA + EU dual institute</p>
+          <ul class="space-y-1 text-sm text-slate-700">
+            <li class="lang-zh">✓ 首个同行评审的 MENA 验证治理架构</li>
+            <li class="lang-zh">✓ 96% 治理违规拦截率</li>
+            <li class="lang-zh">✓ 200+ 阿拉伯企业工作流测试</li>
+            <li class="lang-en">✓ First peer-reviewed MENA-validated governance architecture</li>
+            <li class="lang-en">✓ 96% governance violation interception rate</li>
+            <li class="lang-en">✓ 200+ Arabic enterprise workflows tested</li>
+          </ul>
+          <div class="mt-4 p-3 bg-violet-50 border border-violet-200 rounded text-xs text-violet-800 lang-zh">
+            <strong>核心:</strong> 4 层防御式架构直接验证 NovaOS 治理优先设计。Tamas 需要评估是否采纳 LGA 作为参考架构。
+          </div>
+          <div class="mt-4 p-3 bg-violet-50 border border-violet-200 rounded text-xs text-violet-800 lang-en">
+            <strong>Core:</strong> 4-layer defense-in-depth architecture directly validates NovaOS governance-first design. Tamas needs to evaluate LGA adoption.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 0.5: What Was Built Tonight -->
+    <div class="mb-8 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 border border-emerald-200">
+      <h2 class="text-2xl font-bold text-emerald-800 mb-4">
+        <span class="lang-zh">今晚构建了什么</span>
+        <span class="lang-en">What Was Built Tonight</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-white rounded-lg p-4 border border-emerald-200">
+          <div class="text-emerald-700 font-semibold mb-2 lang-zh">✓ ContractGuard C6</div>
+          <div class="text-emerald-700 font-semibold mb-2 lang-en">✓ ContractGuard C6</div>
+          <p class="text-slate-600 lang-zh">46/46 测试通过 · F1=0.989 · 生产就绪</p>
+          <p class="text-slate-600 lang-en">46/46 tests passing · F1=0.989 · production-grade</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-4 border border-teal-200">
+          <div class="text-teal-700 font-semibold mb-2 lang-zh">✓ SDAIA 对齐文档</div>
+          <div class="text-teal-700 font-semibold mb-2 lang-en">✓ SDAIA Alignment</div>
+          <p class="text-slate-600 lang-zh">条件合规 · 7 部分双语 HTML</p>
+          <p class="text-slate-600 lang-en">CONDITIONAL COMPLIANT · 7-section bilingual</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-4 border border-cyan-200">
+          <div class="text-cyan-700 font-semibold mb-2 lang-zh">✓ NovaOS Mail</div>
+          <div class="text-cyan-700 font-semibold mb-2 lang-en">✓ NovaOS Mail</div>
+          <p class="text-slate-600 lang-zh">Render 多服务部署 · 运行中</p>
+          <p class="text-slate-600 lang-en">Render multi-service · operational</p>
+        </div>
+      </div>
+
+      <div class="mt-4 p-4 bg-emerald-100 rounded-lg border border-emerald-300">
+        <p class="text-sm text-emerald-900 lang-zh"><strong>基础设施修复:</strong> 清理 9,317 个 JSONL 文件，停止 hook 超时问题。MEMORY.md 限制提升至 200 行。</p>
+        <p class="text-sm text-emerald-900 lang-en"><strong>Infrastructure:</strong> Cleaned 9,317 JSONL files, fixed stop hook timeout. MEMORY.md limit raised to 200 lines.</p>
+      </div>
+    </div>
+
+    <!-- Section 0.9: McKinsey Intelligence Slides -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-slate-800 mb-6">
+        <span class="lang-zh">情报简报</span>
+        <span class="lang-en">Intelligence Briefing</span>
+      </h2>
+      <p class="text-slate-500 text-sm mb-6 lang-zh">昨夜研究 · 提炼精华</p>
+      <p class="text-slate-500 text-sm mb-6 lang-en">Last night's research · Key insights</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Slide 1: LGA Architecture -->
+        <div class="signal-card bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full lang-zh">技术趋势</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full lang-en">Technology Trend</span>
+            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded-full">ArXiv</span>
+          </div>
+
+          <div class="text-center mb-6">
+            <div class="text-5xl font-black text-indigo-600 mb-1">96%</div>
+            <p class="text-xs text-slate-500 lang-zh">治理违规拦截率</p>
+            <p class="text-xs text-slate-500 lang-en">violation interception</p>
+          </div>
+
+          <h3 class="text-lg font-semibold text-slate-800 mb-4 lang-zh">分层治理成为基础设施</h3>
+          <h3 class="text-lg font-semibold text-slate-800 mb-4 lang-en">Governance as Infrastructure</h3>
+
+          <ul class="space-y-2 mb-4 text-sm text-slate-600">
+            <li class="lang-zh">• 4 层防御式执行架构（L1-L4）</li>
+            <li class="lang-zh">• 1,081 多语言企业场景测试</li>
+            <li class="lang-zh">• Merkle 树审计日志证明（加密防篡改）</li>
+            <li class="lang-en">• 4-layer defense-in-depth execution</li>
+            <li class="lang-en">• 1,081 multilingual enterprise scenarios</li>
+            <li class="lang-en">• Merkle-tree cryptographic audit proofs</li>
+          </ul>
+
+          <div class="bg-indigo-50 rounded p-3 mb-4">
+            <p class="text-xs font-semibold text-indigo-700 mb-1 lang-zh">对 NovaOS 意味着</p>
+            <p class="text-xs font-semibold text-indigo-700 mb-1 lang-en">So What for NovaOS</p>
+            <p class="text-xs text-indigo-900 lang-zh">学术验证 + MENA 定位。可采纳 L1/L4 作为开源标准，保护 L2/L3 作为差异化。</p>
+            <p class="text-xs text-indigo-900 lang-en">Academic credibility + MENA moat. Adopt L1/L4 as open standards, protect L2/L3 as IP.</p>
+          </div>
+
+          <div class="flex justify-between items-center text-xs">
+            <span class="px-2 py-1 bg-red-100 text-red-700 rounded font-semibold lang-zh">本周行动</span>
+            <span class="px-2 py-1 bg-red-100 text-red-700 rounded font-semibold lang-en">This Week</span>
+            <span class="text-slate-600 lang-zh">转发给 Tamas + 了解第 1 层</span>
+            <span class="text-slate-600 lang-en">Forward to Tamas · evaluate Layer 1</span>
+          </div>
+        </div>
+
+        <!-- Slide 2: SDAIA Compliance -->
+        <div class="signal-card bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded-full lang-zh">市场信号</span>
+            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded-full lang-en">Market Signal</span>
+            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded-full">SDAIA</span>
+          </div>
+
+          <div class="text-center mb-6">
+            <div class="text-5xl font-black text-indigo-600 mb-1">4-8w</div>
+            <p class="text-xs text-slate-500 lang-zh">Etimad 注册前置时间</p>
+            <p class="text-xs text-slate-500 lang-en">Etimad registration lead time</p>
+          </div>
+
+          <h3 class="text-lg font-semibold text-slate-800 mb-4 lang-zh">合规不是选项，是必需品</h3>
+          <h3 class="text-lg font-semibold text-slate-800 mb-4 lang-en">Compliance is Mandatory</h3>
+
+          <ul class="space-y-2 mb-4 text-sm text-slate-600">
+            <li class="lang-zh">• ContractGuard 条件合规（5 个缺口）</li>
+            <li class="lang-zh">• SDAIA L2 5 阶段成熟度模型</li>
+            <li class="lang-zh">• Etimad P0 是阿拉伯语部署的拦路虎</li>
+            <li class="lang-en">• ContractGuard CONDITIONAL (5 gaps)</li>
+            <li class="lang-en">• SDAIA L2 maturity 5 tiers</li>
+            <li class="lang-en">• Etimad P0 blocker for Arabic deployment</li>
+          </ul>
+
+          <div class="bg-indigo-50 rounded p-3 mb-4">
+            <p class="text-xs font-semibold text-indigo-700 mb-1 lang-zh">对 NovaOS 意味着</p>
+            <p class="text-xs font-semibold text-indigo-700 mb-1 lang-en">So What for NovaOS</p>
+            <p class="text-xs text-indigo-900 lang-zh">Etimad 注册启动 ≤ Apr 10，Q2 末完成。ASG/Aramco 部署依赖此。</p>
+            <p class="text-xs text-indigo-900 lang-en">Start Etimad registration by Apr 10. Q2 completion required for ASG/Aramco deployment.</p>
+          </div>
+
+          <div class="flex justify-between items-center text-xs">
+            <span class="px-2 py-1 bg-red-100 text-red-700 rounded font-semibold lang-zh">本周行动</span>
+            <span class="px-2 py-1 bg-red-100 text-red-700 rounded font-semibold lang-en">This Week</span>
+            <span class="text-slate-600 lang-zh">与 Moazeem 启动 Etimad 流程</span>
+            <span class="text-slate-600 lang-en">Start Etimad process with Moazeem</span>
+          </div>
+        </div>
+
+        <!-- Slide 3: AMOS Positioning -->
+        <div class="signal-card bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full lang-zh">客户洞察</span>
+            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full lang-en">Customer Insight</span>
+            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded-full">ASG</span>
+          </div>
+
+          <div class="text-center mb-6">
+            <div class="text-5xl font-black text-indigo-600 mb-1">3</div>
+            <p class="text-xs text-slate-500 lang-zh">Gate Zero 准备周期</p>
+            <p class="text-xs text-slate-500 lang-en">weeks until Gate Zero</p>
+          </div>
+
+          <h3 class="text-lg font-semibold text-slate-800 mb-4 lang-zh">AMOS 是 Gate Zero 的硬性要求</h3>
+          <h3 class="text-lg font-semibold text-slate-800 mb-4 lang-en">AMOS Schema Blocks Gate Zero</h3>
+
+          <ul class="space-y-2 mb-4 text-sm text-slate-600">
+            <li class="lang-zh">• ASG 航空 MRO 工单系统的行业标准</li>
+            <li class="lang-zh">• Gate Zero 准备需要 AMOS 架构占位符</li>
+            <li class="lang-zh">• 预算 + 人员配置依赖 AMOS 范围</li>
+            <li class="lang-en">• Industry standard for ASG aviation MRO</li>
+            <li class="lang-en">• Gate Zero prep requires AMOS schema</li>
+            <li class="lang-en">• Budget + staffing depend on AMOS scope</li>
+          </ul>
+
+          <div class="bg-indigo-50 rounded p-3 mb-4">
+            <p class="text-xs font-semibold text-indigo-700 mb-1 lang-zh">对 NovaOS 意味着</p>
+            <p class="text-xs font-semibold text-indigo-700 mb-1 lang-en">So What for NovaOS</p>
+            <p class="text-xs text-indigo-900 lang-zh">Apr 6 前必须获取 AMOS 架构，否则 Gate Zero 无法启动。</p>
+            <p class="text-xs text-indigo-900 lang-en">Must obtain AMOS schema by Apr 6 or Gate Zero stalls.</p>
+          </div>
+
+          <div class="flex justify-between items-center text-xs">
+            <span class="px-2 py-1 bg-red-100 text-red-700 rounded font-semibold lang-zh">本周行动</span>
+            <span class="px-2 py-1 bg-red-100 text-red-700 rounded font-semibold lang-en">This Week</span>
+            <span class="text-slate-600 lang-zh">向 Luvy 请求 AMOS schema</span>
+            <span class="text-slate-600 lang-en">Request AMOS schema from Luvy</span>
+          </div>
+        </div>
+
+        <!-- Slide 4: Governance Convergence -->
+        <div class="signal-card bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-full lang-zh">架构机会</span>
+            <span class="px-3 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-full lang-en">Architecture Opportunity</span>
+            <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded-full">Convergence</span>
+          </div>
+
+          <div class="text-center mb-6">
+            <div class="text-5xl font-black text-indigo-600 mb-1">90d</div>
+            <p class="text-xs text-slate-500 lang-zh">窗口：治理成为基础设施</p>
+            <p class="text-xs text-slate-500 lang-en">window: governance as infrastructure</p>
+          </div>
+
+          <h3 class="text-lg font-semibold text-slate-800 mb-4 lang-zh">治理标准化：学术 + 开源 + 协议</h3>
+          <h3 class="text-lg font-semibold text-slate-800 mb-4 lang-en">Governance Standardization Converging</h3>
+
+          <ul class="space-y-2 mb-4 text-sm text-slate-600">
+            <li class="lang-zh">• LGA 学术共识（同行评审）</li>
+            <li class="lang-zh">• MAGT 开源工具包（240 星，48h 旧）</li>
+            <li class="lang-zh">• MCP 治理工作组（Q2 2026 标准）</li>
+            <li class="lang-en">• LGA academic consensus (peer-reviewed)</li>
+            <li class="lang-en">• MAGT open-source toolkit (240 stars)</li>
+            <li class="lang-en">• MCP Governance WG (Q2 2026 draft)</li>
+          </ul>
+
+          <div class="bg-indigo-50 rounded p-3 mb-4">
+            <p class="text-xs font-semibold text-indigo-700 mb-1 lang-zh">对 NovaOS 意味着</p>
+            <p class="text-xs font-semibold text-indigo-700 mb-1 lang-en">So What for NovaOS</p>
+            <p class="text-xs text-indigo-900 lang-zh">采纳开源标准（L1/L4），锁定 IP 差异化（L2/L3）。Q2 末 ASG/Aramco 前完成模型。</p>
+            <p class="text-xs text-indigo-900 lang-en">Adopt open standards, lock IP on differentiation layers. Complete moat by Q2.</p>
+          </div>
+
+          <div class="flex justify-between items-center text-xs">
+            <span class="px-2 py-1 bg-amber-100 text-amber-700 rounded font-semibold lang-zh">月度跟踪</span>
+            <span class="px-2 py-1 bg-amber-100 text-amber-700 rounded font-semibold lang-en">Monthly Watch</span>
+            <span class="text-slate-600 lang-zh">监控 MAGT/MCP WG 动态</span>
+            <span class="text-slate-600 lang-en">Monitor MAGT/MCP evolution</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Signal Board -->
+    <div class="mb-8 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-2xl font-bold text-slate-800 mb-6">
+        <span class="lang-zh">信号板</span>
+        <span class="lang-en">Signal Board</span>
+      </h2>
+
+      <div class="mb-8">
+        <h3 class="text-lg font-semibold text-green-700 mb-4 lang-zh">信号 (≥6.5/10)</h3>
+        <h3 class="text-lg font-semibold text-green-700 mb-4 lang-en">Signals (≥6.5/10)</h3>
+        <div class="space-y-3">
+          <div class="p-4 bg-green-50 border-l-4 border-green-500 rounded">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-green-900 lang-zh">EU AI 法案第 8 章 → MENA 应对</p>
+                <p class="font-semibold text-green-900 lang-en">EU AI Act Chapter 8 → MENA Response</p>
+                <p class="text-sm text-slate-600 lang-zh">欧盟第三国监管溢出效应。MENA 采购方将同步合规要求。</p>
+                <p class="text-sm text-slate-600 lang-en">EU regulatory spillover to third countries. MENA procurement will synchronize.</p>
+              </div>
+              <span class="text-2xl font-black text-green-600">8.5</span>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 border-l-4 border-green-500 rounded">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-green-900">LGA 架构成为基础设施标准</p>
+                <p class="text-sm text-slate-600 lang-zh">学术验证 + 开源工具 + 协议标准化。治理不再是功能，是设计。</p>
+                <p class="text-sm text-slate-600 lang-en">Academic + open-source + protocol maturation. Governance is design.</p>
+              </div>
+              <span class="text-2xl font-black text-green-600">8.0</span>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 border-l-4 border-green-500 rounded">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-green-900 lang-zh">AMOS 架构定位 → 垂直机会</p>
+                <p class="font-semibold text-green-900 lang-en">AMOS Positioning → Vertical Beachhead</p>
+                <p class="text-sm text-slate-600 lang-zh">ASG 航空 MRO 是进入阿拉伯工业的杠杆点。AMOS 理解 = 市场话语权。</p>
+                <p class="text-sm text-slate-600 lang-en">ASG MRO is leverage for Middle East industry. AMOS fluency = market voice.</p>
+              </div>
+              <span class="text-2xl font-black text-green-600">7.75</span>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 border-l-4 border-green-500 rounded">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-green-900 lang-zh">ContractGuard 生产就绪 → 垂直验证</p>
+                <p class="font-semibold text-green-900 lang-en">ContractGuard Production Ready → Vertical Validation</p>
+                <p class="text-sm text-slate-600 lang-zh">46/46 测试，F1=0.989。能在 ASG 采购合同上验证。</p>
+                <p class="text-sm text-slate-600 lang-en">46/46 tests, F1=0.989. Ready to validate on ASG procurement contracts.</p>
+              </div>
+              <span class="text-2xl font-black text-green-600">7.5</span>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 border-l-4 border-green-500 rounded">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-green-900 lang-zh">SDAIA Etimad 注册 → 区域许可</p>
+                <p class="font-semibold text-green-900 lang-en">SDAIA Etimad Registration → Regional License</p>
+                <p class="text-sm text-slate-600 lang-zh">4-8 周前置。不提前启动，年底仍在等待。</p>
+                <p class="text-sm text-slate-600 lang-en">4-8 week lead time. Late start = year-end delays.</p>
+              </div>
+              <span class="text-2xl font-black text-green-600">7.25</span>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 border-l-4 border-green-500 rounded">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-green-900 lang-zh">Render 部署架构 → 成本优化</p>
+                <p class="font-semibold text-green-900 lang-en">Render Deployment Pattern → Cost Optimization</p>
+                <p class="text-sm text-slate-600 lang-zh">Free Tier = 重启时文件系统重置。需持久化设计。</p>
+                <p class="text-sm text-slate-600 lang-en">Free Tier filesystem resets on restart. Persistent design required.</p>
+              </div>
+              <span class="text-2xl font-black text-green-600">6.75</span>
+            </div>
+          </div>
+          <div class="p-4 bg-green-50 border-l-4 border-green-500 rounded">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-green-900 lang-zh">基础设施债务 → 清理优先</p>
+                <p class="font-semibold text-green-900 lang-en">Infrastructure Debt → Cleanup Priority</p>
+                <p class="text-sm text-slate-600 lang-zh">9,317 JSONL 文件阻塞每个 Session。清理 = 2-3 小时性能回收。</p>
+                <p class="text-sm text-slate-600 lang-en">9,317 JSONL files block every session. Cleanup = 2-3h performance recovery.</p>
+              </div>
+              <span class="text-2xl font-black text-green-600">6.5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-0">
+        <h3 class="text-lg font-semibold text-slate-500 mb-4 lang-zh">噪音 (&lt;6.5/10)</h3>
+        <h3 class="text-lg font-semibold text-slate-500 mb-4 lang-en">Noise (&lt;6.5/10)</h3>
+        <div class="space-y-3">
+          <div class="p-4 bg-slate-100 border-l-4 border-slate-400 rounded opacity-75">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-slate-700 lang-zh">LangGraph v1.2 → 本地调度</p>
+                <p class="font-semibold text-slate-700 lang-en">LangGraph v1.2 → Local Scheduling</p>
+                <p class="text-sm text-slate-600 lang-zh">检查点改进有用，但 NovaOS 已有 LaunchD。非关键。</p>
+                <p class="text-sm text-slate-600 lang-en">Checkpointing useful but NovaOS has LaunchD. Not critical.</p>
+              </div>
+              <span class="text-2xl font-black text-slate-400">6.0</span>
+            </div>
+          </div>
+          <div class="p-4 bg-slate-100 border-l-4 border-slate-400 rounded opacity-75">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-slate-700 lang-zh">MAGT (Microsoft Agent Governance)</p>
+                <p class="font-semibold text-slate-700 lang-en">MAGT (Microsoft Agent Governance)</p>
+                <p class="text-sm text-slate-600 lang-zh">L1 能力执行与 LGA 部分重叠。监控采纳率但不先行投资。</p>
+                <p class="text-sm text-slate-600 lang-en">L1 capability enforcement overlaps. Monitor adoption but don't lead.</p>
+              </div>
+              <span class="text-2xl font-black text-slate-400">5.5</span>
+            </div>
+          </div>
+          <div class="p-4 bg-slate-100 border-l-4 border-slate-400 rounded opacity-75">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-semibold text-slate-700 lang-zh">Aegis 架构 (ArXiv 2603.16938)</p>
+                <p class="font-semibold text-slate-700 lang-en">Aegis Architecture (ArXiv 2603.16938)</p>
+                <p class="text-sm text-slate-600 lang-zh">正式验证伦理政策的绑定。太早期，无实证结果。</p>
+                <p class="text-sm text-slate-600 lang-en">Formal verification of ethics policies. Too early, no empirical data.</p>
+              </div>
+              <span class="text-2xl font-black text-slate-400">5.0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Day Score -->
+    <div class="mb-8 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-6 border border-indigo-200">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-2xl font-bold text-indigo-900">
+          <span class="lang-zh">今日成绩</span>
+          <span class="lang-en">Day Score</span>
+        </h2>
+        <div class="text-6xl font-black text-indigo-600">A</div>
+      </div>
+
+      <p class="text-slate-700 mb-4 lang-zh"><strong>理由:</strong> ContractGuard 生产就绪（F1=0.989）+ 关键学术发现（LGA）+ 基础设施清理完成。正研究与工程的完美配合。</p>
+      <p class="text-slate-700 mb-4 lang-en"><strong>Reasoning:</strong> ContractGuard production-ready + critical academic find (LGA) + infrastructure cleanup complete. Research-engineering alignment.</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+        <div class="bg-white rounded p-3 border border-indigo-100">
+          <p class="text-indigo-600 font-semibold">7</p>
+          <p class="text-slate-600 text-xs lang-zh">信号 (≥6.5)</p>
+          <p class="text-slate-600 text-xs lang-en">Signals</p>
+        </div>
+        <div class="bg-white rounded p-3 border border-indigo-100">
+          <p class="text-indigo-600 font-semibold">3</p>
+          <p class="text-slate-600 text-xs lang-zh">噪音 (&lt;6.5)</p>
+          <p class="text-slate-600 text-xs lang-en">Noise</p>
+        </div>
+        <div class="bg-white rounded p-3 border border-indigo-100">
+          <p class="text-indigo-600 font-semibold">25+</p>
+          <p class="text-slate-600 text-xs lang-zh">文件创建</p>
+          <p class="text-slate-600 text-xs lang-en">Files Created</p>
+        </div>
+        <div class="bg-white rounded p-3 border border-indigo-100">
+          <p class="text-indigo-600 font-semibold">46</p>
+          <p class="text-slate-600 text-xs lang-zh">测试通过</p>
+          <p class="text-slate-600 text-xs lang-en">Tests Passing</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Executive Summary -->
+    <div class="mb-8 bg-white border border-slate-200 rounded-xl p-6">
+      <h2 class="text-2xl font-bold text-slate-800 mb-4">
+        <span class="lang-zh">执行摘要</span>
+        <span class="lang-en">Executive Summary</span>
+      </h2>
+
+      <ul class="space-y-4 text-slate-700">
+        <li class="flex gap-3">
+          <span class="text-green-600 font-bold text-lg">✓</span>
+          <div>
+            <p class="font-semibold lang-zh">ContractGuard Cycle 6：生产就绪</p>
+            <p class="font-semibold lang-en">ContractGuard Cycle 6: Production Ready</p>
+            <p class="text-sm text-slate-600 lang-zh">46/46 测试通过，F1=0.989，无缺陷。准备客户验证。</p>
+            <p class="text-sm text-slate-600 lang-en">46/46 tests passing, F1=0.989, zero defects. Ready for customer validation.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-3">
+          <span class="text-violet-600 font-bold text-lg">★</span>
+          <div>
+            <p class="font-semibold lang-zh">分层治理架构（LGA）：学术验证</p>
+            <p class="font-semibold lang-en">Layered Governance Architecture: Academic Validation</p>
+            <p class="text-sm text-slate-600 lang-zh">ArXiv 2603.07191v2，MENA + EU 双研究所。96% 违规拦截率。直接对标 NovaOS 治理层设计。</p>
+            <p class="text-sm text-slate-600 lang-en">ArXiv 2603.07191v2, peer-reviewed by MENA+EU institutes. 96% interception. Validates NovaOS governance-first architecture.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-3">
+          <span class="text-amber-600 font-bold text-lg">⚠</span>
+          <div>
+            <p class="font-semibold lang-zh">Gate Zero 准备阻塞：AMOS 架构缺失</p>
+            <p class="font-semibold lang-en">Gate Zero Blocked: Missing AMOS Schema</p>
+            <p class="text-sm text-slate-600 lang-zh">Apr 6 前必须获取 AMOS 工单架构（从 ASG），否则预算 + 人员配置无法启动。</p>
+            <p class="text-sm text-slate-600 lang-en">Must obtain AMOS work order schema by Apr 6 or Gate Zero budget/staffing cannot proceed.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 5: Immediate Actions (明天早上) -->
+    <div class="mb-8 bg-gradient-to-r from-red-50 to-rose-50 rounded-xl p-6 border border-red-200">
+      <h2 class="text-2xl font-bold text-red-900 mb-4">
+        <span class="lang-zh">明天早上优先级</span>
+        <span class="lang-en">Tomorrow Morning Priorities</span>
+      </h2>
+
+      <ol class="space-y-3">
+        <li class="flex gap-3">
+          <span class="text-red-600 font-bold text-lg">[P0]</span>
+          <div>
+            <p class="font-semibold lang-zh">LinkedIn 帖子 → Monica 审核（超期）</p>
+            <p class="font-semibold lang-en">LinkedIn post → Monica review (overdue)</p>
+            <p class="text-sm text-slate-600 lang-zh">NovaOS 治理层草稿准备好了，需要 Monica 的营销视角进行最终审核。</p>
+            <p class="text-sm text-slate-600 lang-en">Draft ready. Monica to review before publishing. Market narrative alignment critical.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-3">
+          <span class="text-red-600 font-bold text-lg">[P0]</span>
+          <div>
+            <p class="font-semibold lang-zh">Gate Zero 准备 → 锁定 AMOS 架构</p>
+            <p class="font-semibold lang-en">Gate Zero prep → Lock AMOS schema</p>
+            <p class="text-sm text-slate-600 lang-zh">与 Luvy 确认 AMOS 工单系统的架构（列表、字段、业务流程）。Apr 6 截止。</p>
+            <p class="text-sm text-slate-600 lang-en">Confirm with Luvy: AMOS work order schema (fields, workflow, data model). Apr 6 deadline.</p>
+          </div>
+        </li>
+
+        <li class="flex gap-3">
+          <span class="text-amber-600 font-bold text-lg">[P1]</span>
+          <div>
+            <p class="font-semibold lang-zh">LGA 架构评估 → 转发给 Tamas</p>
+            <p class="font-semibold lang-en">LGA architecture → Forward to Tamas</p>
+            <p class="text-sm text-slate-600 lang-zh">发送 ArXiv 论文 + 4 层架构摘要，咨询：我们能在第 1 周原型化第 1 层吗？</p>
+            <p class="text-sm text-slate-600 lang-en">Send ArXiv paper + 4-layer summary. Question: Can we prototype Layer 1 in Week 1?</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Section 0.7: Audio Briefing Player -->
+    <div class="bg-gradient-to-b from-slate-800 to-slate-900 rounded-xl p-6 mb-8 text-white">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Left: Player -->
+        <div class="md:col-span-2">
+          <h3 class="text-xl font-bold mb-1 lang-zh">晨间播报</h3>
+          <h3 class="text-xl font-bold mb-1 lang-en">Morning Briefing</h3>
+          <p class="text-slate-400 text-sm mb-4 lang-zh">60秒 · 今天你需要知道的一切</p>
+          <p class="text-slate-400 text-sm mb-4 lang-en">60 seconds · Everything you need to know today</p>
+
+          <audio controls class="w-full rounded-lg mb-3 audio-player" style="height: 40px;">
+            <source src="file:///Users/xingxing/Desktop/knowledge/reports/morning/2026-04-03-briefing.m4a" type="audio/mp4">
+            <p class="text-slate-400 text-sm">Audio unavailable</p>
+          </audio>
+
+          <button onclick="toggleScript()" class="text-sm text-slate-300 hover:text-white underline cursor-pointer lang-zh">
+            📄 查看文稿
+          </button>
+          <button onclick="toggleScript()" class="text-sm text-slate-300 hover:text-white underline cursor-pointer lang-en">
+            📄 View transcript
+          </button>
+
+          <div id="script-panel" class="mt-3 hidden bg-slate-700 rounded p-3 max-h-48 overflow-y-auto">
+            <p class="text-slate-300 italic text-xs leading-relaxed whitespace-pre-wrap">【晨间播报】April 3, 2026 · Grade A
+
+【10秒：日期与评分】
+今天是 April 3, 2026。今晚评分：A 级。
+你有一个很好的夜晚。继续执行。
+
+【15秒：顶级信号】
+顶级信号：Layered Governance Architecture——一份新的学术研究验证了我们的治理优先架构。
+ArXiv 最新论文，MENA 实验室发表，96% 违规拦截率。
+
+【15秒：今晚建成了什么】
+今晚完成：ContractGuard Cycle 6 生产级验证（46/46 测试通过）。
+SDAIA 架构对齐文档完成，条件合规。NovaOS Mail 服务部署到 Render。
+
+【10秒：今天优先级第一】
+今天要做什么：LinkedIn 文章草稿→Monica 审核。
+Gate Zero 准备。锁定 GA 功能列表。
+
+【10秒：一周预览】
+本周焦点：Apr 6 硬期限。Aramco 验证清单准备中。</p>
+          </div>
+        </div>
+
+        <!-- Right: Key Points -->
+        <div class="space-y-2">
+          <p class="text-sm font-semibold text-slate-300 lang-zh">本期要点</p>
+          <p class="text-sm font-semibold text-slate-300 lang-en">Key points</p>
+
+          <div class="bg-slate-700 rounded px-3 py-2 text-sm border-l-4 border-violet-500">
+            <p class="text-slate-200 lang-zh">✦ LGA 论文验证治理架构</p>
+            <p class="text-slate-200 lang-en">✦ LGA paper validates governance</p>
+          </div>
+
+          <div class="bg-slate-700 rounded px-3 py-2 text-sm border-l-4 border-emerald-500">
+            <p class="text-slate-200 lang-zh">✦ ContractGuard 生产就绪</p>
+            <p class="text-slate-200 lang-en">✦ ContractGuard production-ready</p>
+          </div>
+
+          <div class="bg-slate-700 rounded px-3 py-2 text-sm border-l-4 border-amber-500">
+            <p class="text-slate-200 lang-zh">✦ 三个 P0 Apr 6 截止</p>
+            <p class="text-slate-200 lang-en">✦ 3 P0s due Apr 6</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center py-8 border-t border-slate-200 mt-8 text-slate-500 text-sm">
+      <p class="lang-zh">夜班 v2 · 5 阶段管道 · 生成于 2026-04-03 09:47 UTC</p>
+      <p class="lang-en">Night Shift v2 · 5-Stage Pipeline · Generated 2026-04-03 09:47 UTC</p>
+      <p class="text-xs text-slate-400 mt-2 lang-zh">D1 Digest + D2 World Intelligence + Research + Debate + Builder</p>
+      <p class="text-xs text-slate-400 mt-2 lang-en">D1 Digest + D2 World Intelligence + Research + Debate + Builder</p>
+    </div>
+
+  </div>
+
+  <script>
+    // Initialize language on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyLang);
+    } else {
+      applyLang();
+    }
+  </script>
+
+</body>
+</html>
